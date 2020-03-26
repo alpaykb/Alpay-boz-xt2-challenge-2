@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Klok</title>
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Liu+Jian+Mao+Cao&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+
+<body onload="startTime()">
+    <main>
+        <div class="row-header"></div>
+        <article>
+            <div id="wrapper"></div>
+        </article>
+        <article>
+            <div id="info">
+                <div id="groet"></div>
+                <div id="tijd"></div>
+            </div>
+        </article>
+    </main>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var today = new Date();
+            var hourNow = today.getHours();
+            var script = document.getElementById('groet');
+
+            if (hourNow < 12) {
+
+                var morgen = ['morgen'];
+                $('#wrapper').each(function(i, val) {
+                    $(this).addClass(morgen[i]);
+                    script.outerHTML += '<h2 class="groet">Goedemorgen</h2>';
+                });
+
+            } else if (hourNow >= 12 && hourNow <= 17) {
+
+                var middag = ['middag'];
+                $('#wrapper').each(function(i, val) {
+                    $(this).addClass(middag[i]);
+                    script.outerHTML += '<h2 class="groet">Goedemiddag</h2>';
+                });
+
+            } else if (hourNow > 17 && hourNow <= 24) {
+
+                var avond = ['avond'];
+                $('#wrapper').each(function(i, val) {
+                    $(this).addClass(avond[i]);
+                    script.outerHTML += '<h2 class="groet">Goedenavond</h2>';
+                });
+
+            } else {
+                alert("Tijd onbekend");
+            }
+
+
+        });
+
+    </script>
+    <script>
+        function startTime() {
+            var today = new Date();
+            var h = today.getHours();
+            var m = today.getMinutes();
+            var s = today.getSeconds();
+            m = checkTime(m);
+            s = checkTime(s);
+            document.getElementById('tijd').innerHTML =
+                h + ":" + m + ":" + s;
+            var t = setTimeout(startTime, 500);
+        }
+
+        function checkTime(i) {
+            if (i < 10) {
+                i = "0" + i
+            }; // add zero in front of numbers < 10
+            return i;
+        }
+
+    </script>
+</body>
+
+</html>

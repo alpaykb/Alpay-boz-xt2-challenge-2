@@ -1,0 +1,234 @@
+body {
+    background: #ecf0f1;
+}
+
+main {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+article {
+    width: calc(100% - 20px);
+    height: 300px;
+    margin: 10px;
+}
+
+#wrapper,
+#info {
+    text-align: center;
+    flex: 0 0 auto;
+    font-size: 30px;
+    /*animatie*/
+    -webkit-animation-name: slideInDown;
+    animation-name: slideInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+#tijd,
+.groet {
+    padding: 10px;
+    font-size: 40px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.groet {
+    font-family: 'Liu Jian Mao Cao', cursive;
+}
+
+@-webkit-keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideInDown {
+    0% {
+        -webkit-transform: translateY(-100%);
+        transform: translateY(-100%);
+        visibility: visible;
+    }
+
+    100% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+}
+
+#wrapper {
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-block;
+    float: left;
+    margin-right: 20px;
+    /*animatie*/
+    -webkit-backface-visibility: visible !important;
+    backface-visibility: visible !important;
+    -webkit-animation-name: flipInY;
+    animation-name: flipInY;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+}
+
+@-webkit-keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+@keyframes flipInY {
+    0% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 90deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -20deg);
+        -webkit-transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+
+    60% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, 10deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+        transform: perspective(400px) rotate3d(0, 1, 0, -5deg);
+    }
+
+    100% {
+        -webkit-transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+#date {
+    display: inline-block;
+    float: left;
+}
+
+.morgen {
+    background: url(../img/morgen.png) top center;
+}
+
+.middag {
+    background: url(../img/middag.png) top center;
+}
+
+
+
+.avond {
+    background: url(../img/avond.png) top center;
+}
+
+/*Mobiel*/
+@media only screen and (max-width: 600px) {
+    article {
+        width: calc(100%);
+        height: 600px;
+    }
+
+    #wrapper {
+        opacity: 0.3;
+    }
+
+    #info {
+        width: 100%;
+        position: fixed;
+        top: 50px;
+        left: 0%;
+        margin-top: -50px;
+    }
+
+    #tijd,
+    .groet {
+        font-size: 64px;
+    }
+
+    #tijd {
+        font-family: 'Major Mono Display', monospace;
+    }
+}
+
+/*tablet*/
+@media only screen and (min-width: 768px) {
+    article {
+        height: 200px
+    }
+
+    #wrapper {
+        background-size: cover;
+        background-position: center;
+    }
+
+    /*desktop*/
+    @media only screen and (min-width: 992px) {
+        main {
+            margin: 0 auto;
+        }
+
+        article {
+            width: calc(50% - 20px);
+        }
+
+        #wrapper {
+            margin-left: 30%;
+            width: 400px;
+            height: 400px;
+            background-size: contain;
+        }
+
+        #tijd,
+        .groet {
+            font-size: 80px;
+            padding: 0;
+        }
+
+    }
